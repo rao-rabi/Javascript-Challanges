@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- button to increment and decrement  -->
+    <div
+        class="d-flex justify-content-around align-items-center w-25 border border-2 border-black pt-3 mt-5 m-auto bg-info">
+        <p class="fs-2" id="add" onclick="subtract()" style="cursor: pointer;">-</p>
+        <p class="fs-4 ms-5 me-5" id="number">0</p>
+        <p class="fs-2" id="sub" onclick="add()" style="cursor: pointer;">+</p>
+    </div>
+
+    <!-- button that toggles the visibility of an element -->
+
+    <div class="mt-2 text-center">
+        <p class="bg-body-secondary p-5" id="paraHid">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione
+            dolore,
+            repudiandae deserunt suscipit vero
+            dicta sapiente optio quis excepturi inventore consectetur tenetur illo vel voluptatem et, minus vitae
+            consequatur obcaecati orem ipsum dolor sit amet, consectetur adipisicing elit. Ratione dolore, repudiandae
+            deserunt suscipit vero dicta sapiente optio quis excepturi inventore consectetur tenetur illo vel voluptatem
+            et, minus vitae
+            consequatur obcaecati orem ipsum dolor sit amet, consectetur adipisicing elit. Ratione dolore, repudiandae
+            deserunt suscipit vero dicta sapiente optio quis excepturi inventore consectetur tenetur illo vel voluptatem
+            et, minus vitae
+            consequatur obcaecati orem ipsum dolor sit amet, consectetur adipisicing elit. Ratione dolore, repudiandae
+            deserunt suscipit vero dicta sapiente optio quis excepturi inventore consectetur tenetur illo vel voluptatem
+            et, minus vitae
+            consequatur obcaecati.</p>
+
+        <button type="button" class="text-info bg-success p-2" onclick="visibility()">Click me to see Para</button>
+    </div>
+
+    <!-- Search Filter on Fruits-->
+
+    <div class="d-flex justify-content-center mt-5 mb-5">
+        <input type="search" id="productInput" class="p-3 w-25 border border-4 border-success me-0" placeholder="Search Items..." style="outline: none;">
+        <button type="button" class="p-3 border border-4 bg-success text-white border-success ms-0" onclick="searchProducts()">Search</button>
+    </div>
+    <div id="productId" class="d-flex container gap-3 flex-wrap justify-content-center align-items-center"></div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
