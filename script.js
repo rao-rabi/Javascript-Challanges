@@ -92,12 +92,26 @@ function searchProducts() {
 // Implement JavaScript functionality to display the images one by one, automatically transitioning to the next image after a certain time interval.
 // Add buttons to manually navigate to the previous and next images.
 
+let slideshow = document.getElementById("crouselCars");
+let images = slideshow.getElementsByTagName("img");
 
+let currentIndex = 0;
+images[currentIndex].style.opacity = '1';
 
+function showNextSlide(){
+    images[currentIndex].style.opacity = '0';
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].style.opacity = '1';
 
+}
 
+function showPreviousSlide() {
+    images[currentIndex].style.opacity = '0';
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    images[currentIndex].style.opacity = '1'
+}
 
-
+setInterval(showNextSlide, 3000)
 
 // Build a todo list:
 
