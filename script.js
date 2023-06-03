@@ -86,24 +86,6 @@ function searchProducts() {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Create a slideshow/carousel:
 
 // Add an HTML container element (e.g., <div>) with multiple images inside.
