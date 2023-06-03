@@ -63,12 +63,27 @@ function renderProducts(products) {
 
 function searchProducts() {
     let search = document.getElementById("productInput");
-    let searchedItem = search.value.toLowerCase();
+    let searchedItem = search.value.toLowerCase().trim();
+
+    //when search bar is empty
+    if (searchedItem === "") {
+        productId.innerHTML = "";
+        return;
+    }
+
+    //when item is available
     let searchFilter = products.filter((item) => {
         let productMatch = item.name.toLowerCase().includes(searchedItem);
         return productMatch;
     });
-    renderProducts(searchFilter);
+
+    //when item is not available
+    if (searchFilter.length === 0) {
+        productId.innerHTML = `<h4>Sorry! No Such Item Available</h4>`
+    }
+    else {
+        renderProducts(searchFilter);
+    }
 }
 
 
@@ -94,6 +109,14 @@ function searchProducts() {
 // Add an HTML container element (e.g., <div>) with multiple images inside.
 // Implement JavaScript functionality to display the images one by one, automatically transitioning to the next image after a certain time interval.
 // Add buttons to manually navigate to the previous and next images.
+
+
+
+
+
+
+
+
 // Build a todo list:
 
 // Create an HTML input field and a button for adding todo items.
