@@ -98,7 +98,7 @@ let images = slideshow.getElementsByTagName("img");
 let currentIndex = 0;
 images[currentIndex].style.opacity = '1';
 
-function showNextSlide(){
+function showNextSlide() {
     images[currentIndex].style.opacity = '0';
     currentIndex = (currentIndex + 1) % images.length;
     images[currentIndex].style.opacity = '1';
@@ -119,3 +119,38 @@ setInterval(showNextSlide, 3000)
 // Implement JavaScript functionality to add new todo items to a list when the button is clicked.
 // Display the list of todo items dynamically on the page.
 // Add options to mark items as completed, delete items, or filter items based on their status.
+
+
+let todoList = document.getElementById("todo-list");
+
+let todos = [];
+
+function addTodo(){
+    let todoInput = document.getElementById("todo-input").value;
+    // let todoText = todoInput.value;
+    if (todoInput.trim() !== '') {
+        const todoItem = {
+            Id: Date.now(),
+            text: todoInput,
+            completed: false
+        }
+        todos.push(todoItem);
+        renderTodoData();
+        todoInput = '';
+    }
+}
+todos.forEach((item)=> {
+    item.completed.value = checked
+})
+
+function renderTodoData() {
+    todoList.innerHTML = '';
+    todos.forEach((todoItem) => {
+        if (todoItem.completed) {
+            todoList.innerHTML += `<li class="completed fs-3 p-2 bg-info-subtle border border-2"><p>${todoItem.text}</p> <input type="radio" value="radio"></li>`
+        }
+        else {
+            todoList.innerHTML += `<li class="fs-3 p-2 bg-danger-subtle border border-2 d-flex justify-content-around align-items-center"><p>${todoItem.text}</p><p class="fs-5">Completed <input type="radio" name="radiocheck" value="radio-btn"></p></li>`
+        }
+    })
+}
