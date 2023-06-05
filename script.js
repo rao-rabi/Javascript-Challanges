@@ -125,7 +125,7 @@ let todoList = document.getElementById("todo-list");
 
 let todos = [];
 
-function addTodo(){
+function addTodo() {
     let todoInput = document.getElementById("todo-input").value;
     // let todoText = todoInput.value;
     if (todoInput.trim() !== '') {
@@ -139,18 +139,25 @@ function addTodo(){
         todoInput = '';
     }
 }
-todos.forEach((item)=> {
-    item.completed.value = checked
-})
+function completedTask() {
+    todos.forEach((item) => {
+        let checkRad = document.getElementsByName("radiocheck");
+        // console.log(checkRad);
+        if (checkRad.value = "radioCho") {
+            item.completed = true;
+        }
+        renderTodoData();
+    })
+}
 
 function renderTodoData() {
     todoList.innerHTML = '';
     todos.forEach((todoItem) => {
         if (todoItem.completed) {
-            todoList.innerHTML += `<li class="completed fs-3 p-2 bg-info-subtle border border-2"><p>${todoItem.text}</p> <input type="radio" value="radio"></li>`
+            todoList.innerHTML += `<li class="completed fs-3 p-2 d-flex justify-content-between ps-5 pe-5 align-items-center border border-2 mb-3"><p class="pt-3">${todoItem.text}</p> <p>Completed</p> </li>`
         }
         else {
-            todoList.innerHTML += `<li class="fs-3 p-1 bg-success-subtle border border-2 d-flex justify-content-between ps-5 pe-5 align-items-center"><p class="pt-3">${todoItem.text}</p><p class="fs-5 pt-3">Completed <input type="radio" name="radiocheck" value=""  class="pt-3"></p></li>`
+            todoList.innerHTML += `<li class="fs-3 p-1 bg-success-subtle border border-2 border-success d-flex justify-content-between ps-5 pe-5 align-items-center mb-3"><p class="pt-3 border border-2">${todoItem.text}</p><p class="fs-5 pt-3">Completed <input type="radio" name="radiocheck" value="radioCho" onchange="completedTask()"  class="pt-3"></p></li>`
         }
     })
 }
