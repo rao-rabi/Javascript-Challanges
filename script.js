@@ -150,7 +150,7 @@ function renderTodoData() {
             todoList.innerHTML += `<li class="completed fs-3 p-2 bg-info-subtle border border-2"><p>${todoItem.text}</p> <input type="radio" value="radio"></li>`
         }
         else {
-            todoList.innerHTML += `<li class="fs-3 p-2 bg-danger-subtle border border-2 d-flex justify-content-around align-items-center"><p>${todoItem.text}</p><p class="fs-5">Completed <input type="radio" name="radiocheck" value="radio-btn"></p></li>`
+            todoList.innerHTML += `<li class="fs-3 p-1 bg-success-subtle border border-2 d-flex justify-content-between ps-5 pe-5 align-items-center"><p class="pt-3">${todoItem.text}</p><p class="fs-5 pt-3">Completed <input type="radio" name="radiocheck" value=""  class="pt-3"></p></li>`
         }
     })
 }
