@@ -33,7 +33,7 @@ function visibility() {
 
 // Create an array of objects (e.g., an array of products with names and prices).
 // Add an input field and a button to the HTML page.
-// Implement JavaScript functionality so that when the button is clicked, it searches the array based on the input value and displays matching results.
+// Implement JavaScript functionality so that on inputig in search bar it searches the array based on the input value and displays matching results.
 
 
 let products = [
