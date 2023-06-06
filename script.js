@@ -136,28 +136,45 @@ function addTodo() {
         }
         todos.push(todoItem);
         renderTodoData();
-        todoInput = '';
+        document.getElementById("todo-input").value = '';
     }
 }
+
+
 function completedTask() {
+    let checkRad = document.getElementsByName("radiocheck");
+    // console.log(checkRad);
+    let selectedRad = '';
+
+    for (let i = 0; i < checkRad.length; i++) {
+        if (checkRad[i].checked) {
+            selectedRad = checkRad[i].value;
+            break;
+        }
+    }
+
     todos.forEach((item) => {
-        let checkRad = document.getElementsByName("radiocheck");
-        // console.log(checkRad);
-        if (checkRad.value = "radioCho") {
+
+        if (selectedRad === "radioCho") {
             item.completed = true;
         }
-        renderTodoData();
+        else {
+            item.completed = false;
+        }
+
     })
+    renderTodoData();
 }
+
 
 function renderTodoData() {
     todoList.innerHTML = '';
-    todos.forEach((todoItem) => {
-        if (todoItem.completed) {
-            todoList.innerHTML += `<li class="completed fs-3 p-2 d-flex justify-content-between ps-5 pe-5 align-items-center border border-2 mb-3"><p class="pt-3">${todoItem.text}</p> <p>Completed</p> </li>`
+    todos.forEach((item) => {
+        if (item.completed) {
+            todoList.innerHTML += `<li class="completed fs-3 p-2 d-flex justify-content-between ps-5 pe-5 align-items-center border border-2 mb-3"><p class="pt-3">${item.text}</p> <p class="pt-3">Completed</p> </li>`
         }
         else {
-            todoList.innerHTML += `<li class="fs-3 p-1 bg-success-subtle border border-2 border-success d-flex justify-content-between ps-5 pe-5 align-items-center mb-3"><p class="pt-3 border border-2">${todoItem.text}</p><p class="fs-5 pt-3">Completed <input type="radio" name="radiocheck" value="radioCho" onchange="completedTask()"  class="pt-3"></p></li>`
+            todoList.innerHTML += `<li class="fs-3 p-1 bg-success-subtle border border-2 border-success d-flex justify-content-between ps-5 pe-5 align-items-center mb-3"><p class="pt-3 border border-2">${item.text}</p><p class="fs-5 pt-3">Completed <input type="radio" name="radiocheck" value="radioCho" onchange="completedTask()"></p></li>`
         }
     })
 }
