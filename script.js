@@ -127,7 +127,6 @@ let todos = [];
 
 function addTodo() {
     let todoInput = document.getElementById("todo-input").value;
-    // let todoText = todoInput.value;
     if (todoInput.trim() !== '') {
         const todoItem = {
             Id: Date.now(),
@@ -140,29 +139,39 @@ function addTodo() {
     }
 }
 
+//completion of a todo item
 
-function completedTask() {
-    let checkRad = document.getElementsByName("radiocheck");
-    // console.log(checkRad);
-    let selectedRad = '';
-
-    for (let i = 0; i < checkRad.length; i++) {
-        if (checkRad[i].checked) {
-            selectedRad = checkRad[i].value;
-            break;
-        }
-    }
-
+function completedTask(itemId) {
     todos.forEach((item) => {
 
-        if (selectedRad === "radioCho") {
-            item.completed = true;
+        if (itemId == item.Id) {
+            item.completed += true;
         }
         else {
-            item.completed = false;
+            item.completed += false;
         }
 
     })
+    renderTodoData();
+}
+
+//deleting a todo item
+
+function todoDelete(itemId) {
+    todos = todos.filter((item) => item.Id != itemId)
+    renderTodoData()
+}
+
+//filter completed and uncompleted
+
+function filterStatus(e) {
+    // let status = document.getElementsByName("status");
+    if (e.target.value === "completed") {
+        todos = todos.filter((item) => item.completed == true)
+    }
+    else if(e.target.value === "uncompleted") {
+        todos = todos.filter((item) => item.completed == false)
+    }
     renderTodoData();
 }
 
@@ -171,10 +180,10 @@ function renderTodoData() {
     todoList.innerHTML = '';
     todos.forEach((item) => {
         if (item.completed) {
-            todoList.innerHTML += `<li class="completed fs-3 p-2 d-flex justify-content-between ps-5 pe-5 align-items-center border border-2 mb-3"><p class="pt-3">${item.text}</p> <p class="pt-3">Completed</p> </li>`
+            todoList.innerHTML += `<li class="completed fs-3 p-2 d-flex justify-content-between ps-5 pe-5 align-items-center border border-5 border-white mb-3"><p class="pt-3 text-wrap">${item.text}</p> <p class="pt-3">Completed</p><button type="button" onclick="todoDelete(${item.Id})">delete</button></li>`
         }
         else {
-            todoList.innerHTML += `<li class="fs-3 p-1 bg-success-subtle border border-2 border-success d-flex justify-content-between ps-5 pe-5 align-items-center mb-3"><p class="pt-3 border border-2">${item.text}</p><p class="fs-5 pt-3">Completed <input type="radio" name="radiocheck" value="radioCho" onchange="completedTask()"></p></li>`
+            todoList.innerHTML += `<li class="fs-3 p-1 bg-success-subtle border border-5 border-white d-flex justify-content-between ps-5 pe-5 align-items-center mb-3"><p class="pt-3 border border-2">${item.text}</p><p class="fs-5 pt-3">Uncompleted <input type="radio" id="radiocheck" value="${item.Id}" onchange="completedTask(${item.Id})"></p><button type="button" class="bg-success text-white" onclick="todoDelete(${item.Id})">delete</button></li>`
         }
     })
 }
